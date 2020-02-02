@@ -4,12 +4,63 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="Rosenbach.Views.MainScreenPage">
+             x:Class="Rosenbach.Views.MainScreenPage"
+             BackgroundColor="LightGray"
+             xmlns:vm="clr-namespace:Rosenbach.ViewModels"
+             Title="{Binding Title}">
+
+    <ContentPage.BindingContext>
+        <vm:MainScreenPageViewModel />
+    </ContentPage.BindingContext>
+
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+
+        <AbsoluteLayout>
+
+            <AbsoluteLayout Margin="20,50,20,0" HeightRequest="100">
+                <Label Text="Frage 1"     Margin="0,10,0,0" FontSize="20" FontAttributes="Bold"/>
+                <Label Text="Tendenz 1 -" Margin="630,10,0,0" FontSize="15" Rotation="-30"/>
+                <Label Text="Tendenz 1"   Margin="895,10,0,0" FontSize="15" Rotation="-30"/>
+                <Label Text="Tendenz 1 +" Margin="1160,10,0,0" FontSize="15" Rotation="-30"/>
+                <Slider Value="{Binding Slider1, Mode=TwoWay}" Minimum="0" Maximum="100" Margin="630,60,0,0" WidthRequest="600"/>
+            </AbsoluteLayout>
+            
+            <AbsoluteLayout Margin="20,150,20,0" HeightRequest="100">
+                <Label Text="Frage 2" Margin="0,10,0,0" FontSize="20" FontAttributes="Bold"/>
+                <Label Text="Tendenz 2 -" Margin="630,10,0,0" FontSize="15" Rotation="-30"/>
+                <Label Text="Tendenz 2" Margin="895,10,0,0" FontSize="15" Rotation="-30"/>
+                <Label Text="Tendenz 2 +" Margin="1160,10,0,0" FontSize="15" Rotation="-30"/>
+                <Slider Value="{Binding Slider2, Mode=TwoWay}" Minimum="0" Maximum="100" Margin="630,60,0,0" WidthRequest="600"/>
+            </AbsoluteLayout>
+
+            <AbsoluteLayout Margin="20,250,20,0" HeightRequest="100">
+                <Label Text="Frage 3" Margin="0,10,0,0" FontSize="20" FontAttributes="Bold"/>
+                <Label Text="Tendenz 3 -" Margin="630,10,0,0" FontSize="15" Rotation="-30"/>
+                <Label Text="Tendenz 3" Margin="895,10,0,0" FontSize="15" Rotation="-30"/>
+                <Label Text="Tendenz 3 +" Margin="1160,10,0,0" FontSize="15" Rotation="-30"/>
+                <Slider  Value="{Binding Slider3, Mode=TwoWay}" Minimum="0" Maximum="100" Margin="630,60,0,0" WidthRequest="600"/>
+            </AbsoluteLayout>
+            
+            <AbsoluteLayout Margin="20,350,20,0" HeightRequest="100">
+                <Label Text="Frage 4" Margin="0,10,0,0" FontSize="20" FontAttributes="Bold"/>
+                <Label Text="Tendenz 4 -" Margin="630,10,0,0" FontSize="15" Rotation="-30"/>
+                <Label Text="Tendenz 4" Margin="895,10,0,0" FontSize="15" Rotation="-30"/>
+                <Label Text="Tendenz 4 +" Margin="1160,10,0,0" FontSize="15" Rotation="-30"/>
+                <Slider  Value="{Binding Slider4, Mode=TwoWay}" Minimum="0" Maximum="100" Margin="630,60,0,0" WidthRequest="600"/>
+            </AbsoluteLayout>
+            
+            <AbsoluteLayout Margin="20,450,20,0" HeightRequest="100">
+                <Label Text="Frage 5" Margin="0,10,0,0" FontSize="20" FontAttributes="Bold"/>
+                <Label Text="Tendenz 5 -" Margin="630,10,0,0" FontSize="15" Rotation="-30"/>
+                <Label Text="Tendenz 5" Margin="895,10,0,0" FontSize="15" Rotation="-30"/>
+                <Label Text="Tendenz 5 +" Margin="1160,10,0,0" FontSize="15" Rotation="-30"/>
+                <Slider  Value="{Binding Slider5, Mode=TwoWay}" Minimum="0" Maximum="100" Margin="630,60,0,0" WidthRequest="600"/>
+            </AbsoluteLayout>
+            <AbsoluteLayout Margin="20,550,20,0" HeightRequest="100">
+                <Label Text="ANGEBOT: Brooks Cyclon für nur 1958€ RSS FEED!!!&#x0a;hallo&#x0a;Kennen Sie schon unser Wellnessangebot? Wir beraten Sie gerne!" HorizontalTextAlignment="Center" FontSize="18" FontAttributes="Bold" LineBreakMode="WordWrap" WidthRequest="650" MinimumHeightRequest="250" BackgroundColor="Accent" TextColor="White"/>
+                <Button Text="Bewerten" Margin="1060,45,0,0" WidthRequest="180" BackgroundColor="#6F1A1F" TextColor="White" />
+            </AbsoluteLayout>
+        </AbsoluteLayout>
+       
     </ContentPage.Content>
 </ContentPage>

@@ -2,6 +2,7 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Rosenbach.Views;
+using Rosenbach.Services.DataBase;
 
 namespace Rosenbach
 {
@@ -10,7 +11,9 @@ namespace Rosenbach
 
         public App()
         {
+            
             InitializeComponent();
+            DataBase.Init(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal));
             MainPage = new MainPage();
         }
 
