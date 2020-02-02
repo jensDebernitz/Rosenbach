@@ -21,7 +21,7 @@ namespace Rosenbach.Views
 
             MasterBehavior = MasterBehavior.Popover;
 
-            MenuPages.Add((int)MenuItemType.Settings, (NavigationPage)Detail);
+            MenuPages.Add((int)MenuItemType.MainScreen, (NavigationPage)Detail);
         }
 
         public async Task NavigateFromMenu(int id)
@@ -30,6 +30,15 @@ namespace Rosenbach.Views
             {
                 switch (id)
                 {
+                    case (int)MenuItemType.MainScreen:
+                        MenuPages.Add(id, new NavigationPage(new MainScreenPage()));
+                        break;
+                    case (int)MenuItemType.ChangeQuestions:
+                        MenuPages.Add(id, new NavigationPage(new ChangeQuestionsPage()));
+                        break;
+                    case (int)MenuItemType.Result:
+                        MenuPages.Add(id, new NavigationPage(new ResultPage()));
+                        break;
                     case (int)MenuItemType.Settings:
                         MenuPages.Add(id, new NavigationPage(new SettingsPage()));
                         break;

@@ -1,7 +1,6 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using Rosenbach.Services;
 using Rosenbach.Views;
 
 namespace Rosenbach
@@ -12,8 +11,6 @@ namespace Rosenbach
         public App()
         {
             InitializeComponent();
-
-            DependencyService.Register<MockDataStore>();
             MainPage = new MainPage();
         }
 
