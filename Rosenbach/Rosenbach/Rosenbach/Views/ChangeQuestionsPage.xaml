@@ -4,12 +4,54 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="Rosenbach.Views.ChangeQuestionsPage">
+             x:Class="Rosenbach.Views.ChangeQuestionsPage"
+             xmlns:vm="clr-namespace:Rosenbach.ViewModels" 
+             Title="{Binding Title}">
+
+    <ContentPage.BindingContext>
+        <vm:ChangeQuestionsViewModel />
+    </ContentPage.BindingContext>
+    
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <AbsoluteLayout>
+            <AbsoluteLayout Margin="20,20,0,0">
+                <Label Margin="0,0,0,0" Text="Abschnitt 1" FontSize="18" FontAttributes="Bold" />
+                <Editor Text="{Binding ReviewSections[0].Question, Mode=TwoWay}"         Margin="0,30,0,0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" WidthRequest="700" HeightRequest="50"/>
+                <Editor Text="{Binding ReviewSections[0].TendenzMinimum, Mode=TwoWay}"   Margin="715,30,0,0" WidthRequest="150" MaxLength="12" HeightRequest="50"/>
+                <Editor Text="{Binding ReviewSections[0].TendenzMiddle, Mode=TwoWay}"    Margin="880,30,0,0" WidthRequest="150" MaxLength="12" HeightRequest="50"/>
+                <Editor Text="{Binding ReviewSections[0].TendenzMaximum, Mode=TwoWay}"   Margin="1045,30,0,0" WidthRequest="150" MaxLength="12" HeightRequest="50"/>
+            </AbsoluteLayout>
+            <AbsoluteLayout Margin="20,120,0,0">
+                <Label Margin="0,0,0,0" Text="Abschnitt 2" FontSize="18" FontAttributes="Bold" />
+                <Editor Text="{Binding ReviewSections[1].Question, Mode=TwoWay}"          Margin="0,30,0,0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" WidthRequest="700" HeightRequest="50"/>
+                <Editor Text="{Binding ReviewSections[1].TendenzMinimum, Mode=TwoWay}"    Margin="715,30,0,0" WidthRequest="150" MaxLength="12" HeightRequest="50"/>
+                <Editor Text="{Binding ReviewSections[1].TendenzMiddle, Mode=TwoWay}"     Margin="880,30,0,0" WidthRequest="150" MaxLength="12" HeightRequest="50"/>
+                <Editor Text="{Binding ReviewSections[1].TendenzMaximum, Mode=TwoWay}"    Margin="1045,30,0,0" WidthRequest="150" MaxLength="12" HeightRequest="50"/>
+            </AbsoluteLayout>
+            <AbsoluteLayout Margin="20,220,0,0">
+                <Label Margin="0,0,0,0" Text="Abschnitt 3" FontSize="18" FontAttributes="Bold" />
+                <Editor Text="{Binding ReviewSections[2].Question, Mode=TwoWay}"         Margin="0,30,0,0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" WidthRequest="700" HeightRequest="50"/>
+                <Editor Text="{Binding ReviewSections[2].TendenzMinimum, Mode=TwoWay}"   Margin="715,30,0,0" WidthRequest="150" MaxLength="12" HeightRequest="50"/>
+                <Editor Text="{Binding ReviewSections[2].TendenzMiddle, Mode=TwoWay}"    Margin="880,30,0,0" WidthRequest="150" MaxLength="12" HeightRequest="50"/>
+                <Editor Text="{Binding ReviewSections[2].TendenzMaximum, Mode=TwoWay}"   Margin="1045,30,0,0" WidthRequest="150" MaxLength="12" HeightRequest="50"/>
+            </AbsoluteLayout>
+            <AbsoluteLayout Margin="20,320,0,0">
+                <Label Margin="0,0,0,0" Text="Abschnitt 4" FontSize="18" FontAttributes="Bold" />
+                <Editor Text="{Binding ReviewSections[3].Question, Mode=TwoWay}"         Margin="0,30,0,0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" WidthRequest="700" HeightRequest="50"/>
+                <Editor Text="{Binding ReviewSections[3].TendenzMinimum, Mode=TwoWay}"   Margin="715,30,0,0" WidthRequest="150" MaxLength="12" HeightRequest="50"/>
+                <Editor Text="{Binding ReviewSections[3].TendenzMiddle, Mode=TwoWay}"    Margin="880,30,0,0" WidthRequest="150" MaxLength="12" HeightRequest="50"/>
+                <Editor Text="{Binding ReviewSections[3].TendenzMaximum, Mode=TwoWay}"   Margin="1045,30,0,0" WidthRequest="150" MaxLength="12" HeightRequest="50"/>
+            </AbsoluteLayout>
+            <AbsoluteLayout Margin="20,420,0,0">
+                <Label Margin="0,0,0,0" Text="Abschnitt 5" FontSize="18" FontAttributes="Bold" />
+                <Editor Text="{Binding ReviewSections[4].Question, Mode=TwoWay}"         Margin="0,30,0,0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" WidthRequest="700" HeightRequest="50"/>
+                <Editor Text="{Binding ReviewSections[4].TendenzMinimum, Mode=TwoWay}"   Margin="715,30,0,0" WidthRequest="150" MaxLength="12" HeightRequest="50"/>
+                <Editor Text="{Binding ReviewSections[4].TendenzMiddle, Mode=TwoWay}"    Margin="880,30,0,0" WidthRequest="150" MaxLength="12" HeightRequest="50"/>
+                <Editor Text="{Binding ReviewSections[4].TendenzMaximum, Mode=TwoWay}"   Margin="1045,30,0,0" WidthRequest="150" MaxLength="12" HeightRequest="50"/>
+            </AbsoluteLayout>
+            <AbsoluteLayout Margin="20,520,0,0">
+                <Button Text="Speichern" WidthRequest="180" BackgroundColor="#6F1A1F" TextColor="White" Command="{Binding CommandSave}"/>
+            </AbsoluteLayout>
+        </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>

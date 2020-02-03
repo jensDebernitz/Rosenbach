@@ -15,6 +15,7 @@ namespace Rosenbach.Views
         public MainScreenPage()
         {
             InitializeComponent();
+            IconImageSource = "@drawable/rosenbachSmall.png";
         }
     }
 }

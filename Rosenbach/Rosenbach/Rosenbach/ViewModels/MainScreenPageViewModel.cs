@@ -1,17 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Windows.Input;
 using Rosenbach.Models;
 
 namespace Rosenbach.ViewModels
 {
+
     public class MainScreenPageViewModel : BaseViewModel
     {
+
+        static MainScreenPageViewModel Instace;
         private double _Slider1 = 50;
         private double _Slider2 = 50;
         private double _Slider3 = 50;
         private double _Slider4 = 50;
         private double _Slider5 = 50;
+        private ReviewSection _ReviewSection1;
+        private ReviewSection _ReviewSection2;
+        private ReviewSection _ReviewSection3;
+        private ReviewSection _ReviewSection4;
+        private ReviewSection _ReviewSection5;
+
+        public ReviewSection ReviewSection1 { get => _ReviewSection1; set => SetProperty(ref _ReviewSection1, value); }
+        public ReviewSection ReviewSection2 { get => _ReviewSection2; set => SetProperty(ref _ReviewSection2, value); }
+        public ReviewSection ReviewSection3 { get => _ReviewSection3; set => SetProperty(ref _ReviewSection3, value); }
+        public ReviewSection ReviewSection4 { get => _ReviewSection4; set => SetProperty(ref _ReviewSection4, value); }
+        public ReviewSection ReviewSection5 { get => _ReviewSection5; set => SetProperty(ref _ReviewSection5, value); }
+
+
+
+        public ICommand CommandEvalute { get; set; }
 
         public double Slider1
         {
@@ -47,30 +65,67 @@ namespace Rosenbach.ViewModels
         {
             Title = "Sporthopädie Rosenbach";
 
+            CommandEvalute = new RelayCommand(new Action<object>(EvaluteClick));
             LoadData();
+            Instace = this;
         }
 
-        private void LoadData()
+        private void EvaluteClick(object sender)
+        {
+            Rating rating = new Rating
+            {
+                Rating1 = Slider1,
+                Rating2 = Slider2,
+                Rating3 = Slider3,
+                Rating4 = Slider4,
+                Rating5 = Slider5
+            };
+
+            RatingDataBase ratingDataBase = new RatingDataBase();
+            ratingDataBase.Upsert(rating);
+        }
+
+        public static MainScreenPageViewModel getInstace()
+        {
+            return Instace;
+        }
+        public void LoadData()
         {
             ReviewSectionDataBase reviewSectionDataBase = new ReviewSectionDataBase();
-
             List<ReviewSection> list = reviewSectionDataBase.GetAll();
-            if(list.Count < 4)
+
+            if(list.Count < 5)
             {
                 InitDataBAseReviewSections();
             }
 
-            foreach(ReviewSection section in list)
-            {
 
-            }
+            ReviewSection1 = list[0];
+            ReviewSection2 = list[1];
+            ReviewSection3 = list[2];
+            ReviewSection4 = list[3];
+            ReviewSection5 = list[4];
         }
 
         private void InitDataBAseReviewSections()
         {
             ReviewSectionDataBase reviewSectionDataBase = new ReviewSectionDataBase();
 
-            
+            foreach(ReviewSection reviewSection in reviewSectionDataBase.GetAll())
+            {
+                reviewSectionDataBase.Delete(reviewSection.Id);
+            }
+
+            for(int i = 0; i < 5; i++)
+            {
+                ReviewSection reviewSection = new ReviewSection();
+                reviewSection.Question = "Frage " + i;
+                reviewSection.TendenzMinimum = "Tendenz- " + i;
+                reviewSection.TendenzMiddle = "Tendenz " + i;
+                reviewSection.TendenzMaximum = "Tendenz+ " + i;
+
+                reviewSectionDataBase.Upsert(reviewSection);
+            }
         }
     }
 }
