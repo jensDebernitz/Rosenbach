@@ -35,6 +35,7 @@ namespace Rosenbach.ViewModels
             }
 
             MainScreenPageViewModel.getInstace().LoadData();
+            ResultPageViewModel.Instance.LoadData();
         }
 
         private void LoadData()

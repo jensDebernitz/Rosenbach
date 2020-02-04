@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Rosenbach.Services.DataBase;
 
 namespace Rosenbach.Models
@@ -13,8 +14,8 @@ namespace Rosenbach.Models
         public double Rating3 { get; set; }
         public double Rating4 { get; set; }
         public double Rating5 { get; set; }
-
-    
+        public DateTime dateTime { get; set; }
+   
     }
 
     public class RatingDataBase : BaseImplementation<Rating>

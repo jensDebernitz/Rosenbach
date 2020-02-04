@@ -4,12 +4,67 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="Rosenbach.Views.ResultPage">
+             x:Class="Rosenbach.Views.ResultPage"
+             xmlns:vm="clr-namespace:Rosenbach.ViewModels" 
+             Title="{Binding Title}">
+
+    <ContentPage.BindingContext>
+        <vm:ResultPageViewModel />
+    </ContentPage.BindingContext>
+
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <AbsoluteLayout Margin="20,20,20,20">
+            <AbsoluteLayout Margin="0,0,0,0" HorizontalOptions="Center">
+                <Label Text="{Binding ReviewSection1.Question}" Margin="0,0,0,0" FontAttributes="Bold" FontSize="18"/>
+                <Label Text="{Binding Result1}" Margin="450,0,0,0" FontAttributes="Bold" FontSize="18" />
+            </AbsoluteLayout>
+
+            <AbsoluteLayout Margin="0,50,0,0" HorizontalOptions="Center">
+                <Label Text="{Binding ReviewSection2.Question}" Margin="0,0,0,0" FontAttributes="Bold" FontSize="18"/>
+                <Label Text="{Binding Result2}" Margin="450,0,0,0" FontAttributes="Bold" FontSize="18" />
+            </AbsoluteLayout>
+
+            <AbsoluteLayout Margin="0,100,0,0" HorizontalOptions="Center">
+                <Label Text="{Binding ReviewSection3.Question}" Margin="0,0,0,0" FontAttributes="Bold" FontSize="18"/>
+                <Label Text="{Binding Result3}" Margin="450,0,0,0" FontAttributes="Bold" FontSize="18" />
+            </AbsoluteLayout>
+
+            <AbsoluteLayout Margin="0,150,0,0" HorizontalOptions="Center">
+                <Label Text="{Binding ReviewSection4.Question}" Margin="0,0,0,0" FontAttributes="Bold" FontSize="18"/>
+                <Label Text="{Binding Result4}" Margin="450,0,0,0" FontAttributes="Bold" FontSize="18" />
+            </AbsoluteLayout>
+
+            <AbsoluteLayout Margin="0,200,0,0" HorizontalOptions="Center">
+                <Label Text="{Binding ReviewSection5.Question}" Margin="0,0,0,0" FontAttributes="Bold" FontSize="18"/>
+                <Label Text="{Binding Result5}" Margin="450,0,0,0" FontAttributes="Bold" FontSize="18" />
+            </AbsoluteLayout>
+
+            <AbsoluteLayout Margin="0,250,0,0" HorizontalOptions="Center">
+                <Label Text="Anzahl Bewertung:" Margin="0,0,0,0" FontAttributes="Bold" FontSize="18"/>
+                <Label Text="{Binding ResultCount}" Margin="450,0,0,0" FontAttributes="Bold" FontSize="18" />
+            </AbsoluteLayout>
+
+            <AbsoluteLayout Margin="550,250,0,0" HorizontalOptions="Center">
+                <Label Text="Bewertungszeitraum:" Margin="0,0,0,0" FontAttributes="Bold" FontSize="18"/>
+                <Label Text="{Binding ReviewTime}" Margin="450,0,0,0" FontAttributes="Bold" FontSize="18" />
+            </AbsoluteLayout>
+
+            <AbsoluteLayout Margin="0,300,0,0" HorizontalOptions="Center">
+                <Label Text="Bewertungen im Zeitraum von 9 - 13 Uhr:" Margin="0,0,0,0" FontAttributes="Bold" FontSize="18"/>
+                <Label Text="{Binding ReviewAM}" Margin="450,0,0,0" FontAttributes="Bold" FontSize="18" />
+            </AbsoluteLayout>
+
+            <AbsoluteLayout Margin="550,300,0,0" HorizontalOptions="Center">
+                <Label Text="Bewertungen im Zeitraum von 13 - 18 Uhr:" Margin="0,0,0,0" FontAttributes="Bold" FontSize="18"/>
+                <Label Text="{Binding ReviewPM}" Margin="450,0,0,0" FontAttributes="Bold" FontSize="18" />
+            </AbsoluteLayout>
+
+            <AbsoluteLayout Margin="1070,520,0,0" HorizontalOptions="Center" WidthRequest="180" HeightRequest="250">
+                <StackLayout>
+                    <Button Text="Reseten" WidthRequest="180" BackgroundColor="#6F1A1F" TextColor="White" Command="{Binding CommandReset}"/>
+                    <Button Text="Senden"  WidthRequest="180" BackgroundColor="#6F1A1F" TextColor="White" Command="{Binding CommandSend}"/>
+                </StackLayout>
+            </AbsoluteLayout>
+        </AbsoluteLayout>
     </ContentPage.Content>
-</ContentPage>
+</ContentPage> 

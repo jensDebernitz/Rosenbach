@@ -9,7 +9,7 @@ namespace Rosenbach.ViewModels
     public class MainScreenPageViewModel : BaseViewModel
     {
 
-        static MainScreenPageViewModel Instace;
+        static MainScreenPageViewModel Instance;
         private double _Slider1 = 50;
         private double _Slider2 = 50;
         private double _Slider3 = 50;
@@ -67,7 +67,7 @@ namespace Rosenbach.ViewModels
 
             CommandEvalute = new RelayCommand(new Action<object>(EvaluteClick));
             LoadData();
-            Instace = this;
+            Instance = this;
         }
 
         private void EvaluteClick(object sender)
@@ -78,16 +78,19 @@ namespace Rosenbach.ViewModels
                 Rating2 = Slider2,
                 Rating3 = Slider3,
                 Rating4 = Slider4,
-                Rating5 = Slider5
+                Rating5 = Slider5,
+                dateTime = DateTime.Now
             };
 
             RatingDataBase ratingDataBase = new RatingDataBase();
             ratingDataBase.Upsert(rating);
+
+            ResultPageViewModel.Instance?.LoadData();
         }
 
         public static MainScreenPageViewModel getInstace()
         {
-            return Instace;
+            return Instance;
         }
         public void LoadData()
         {
@@ -99,7 +102,7 @@ namespace Rosenbach.ViewModels
                 InitDataBAseReviewSections();
             }
 
-
+            //load from database and show it in the main screen
             ReviewSection1 = list[0];
             ReviewSection2 = list[1];
             ReviewSection3 = list[2];
@@ -111,11 +114,13 @@ namespace Rosenbach.ViewModels
         {
             ReviewSectionDataBase reviewSectionDataBase = new ReviewSectionDataBase();
 
+            //delete all
             foreach(ReviewSection reviewSection in reviewSectionDataBase.GetAll())
             {
                 reviewSectionDataBase.Delete(reviewSection.Id);
             }
 
+            //set initial the default....
             for(int i = 0; i < 5; i++)
             {
                 ReviewSection reviewSection = new ReviewSection();
