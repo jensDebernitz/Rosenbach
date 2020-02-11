@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29709.97
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rosenbach.Android", "Rosenbach\Rosenbach.Android\Rosenbach.Android.csproj", "{B52952AA-BC23-4055-B9DE-B75F93B3589A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rosenbach", "Rosenbach\Rosenbach\Rosenbach.csproj", "{8737B3C9-BA6C-4DA6-AC39-79725CE40799}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rosenbach", "Rosenbach\Rosenbach\Rosenbach.csproj", "{8737B3C9-BA6C-4DA6-AC39-79725CE40799}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Rosenbach.Models
+﻿namespace Rosenbach.Models
 {
     public enum MenuItemType
     {

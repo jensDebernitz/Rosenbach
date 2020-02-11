@@ -19,11 +19,11 @@ namespace Rosenbach.ViewModels
         private ReviewSection _ReviewSection4;
         private ReviewSection _ReviewSection5;
 
-        private double _Result1;
-        private double _Result2;
-        private double _Result3;
-        private double _Result4;
-        private double _Result5;
+        private string _Result1;
+        private string _Result2;
+        private string _Result3;
+        private string _Result4;
+        private string _Result5;
         private int _ResultCount;
         private string _ReviewTime;
         private int _ReviewAM;
@@ -35,11 +35,11 @@ namespace Rosenbach.ViewModels
         public ReviewSection ReviewSection3 { get => _ReviewSection3; set => SetProperty(ref _ReviewSection3, value); }
         public ReviewSection ReviewSection4 { get => _ReviewSection4; set => SetProperty(ref _ReviewSection4, value); }
         public ReviewSection ReviewSection5 { get => _ReviewSection5; set => SetProperty(ref _ReviewSection5, value); }
-        public double Result1 { get => _Result1; set => SetProperty(ref _Result1, value); }
-        public double Result2 { get => _Result2; set => SetProperty(ref _Result2, value); }
-        public double Result3 { get => _Result3; set => SetProperty(ref _Result3, value); }
-        public double Result4 { get => _Result4; set => SetProperty(ref _Result4, value); }
-        public double Result5 { get => _Result5; set => SetProperty(ref _Result5, value); }
+        public string Result1 { get => _Result1; set => SetProperty(ref _Result1, value); }
+        public string Result2 { get => _Result2; set => SetProperty(ref _Result2, value); }
+        public string Result3 { get => _Result3; set => SetProperty(ref _Result3, value); }
+        public string Result4 { get => _Result4; set => SetProperty(ref _Result4, value); }
+        public string Result5 { get => _Result5; set => SetProperty(ref _Result5, value); }
         public int ResultCount { get => _ResultCount; set => SetProperty(ref _ResultCount, value); }
         public string ReviewTime { get => _ReviewTime; set => SetProperty(ref _ReviewTime, value); }
         public int ReviewAM { get => _ReviewAM; set => SetProperty(ref _ReviewAM, value); }
@@ -88,14 +88,19 @@ namespace Rosenbach.ViewModels
 
             DateTime dateTimeMin = DateTime.MaxValue;
             DateTime dateTimeMax = DateTime.MinValue;
+            double tempRating1 = 0;
+            double tempRating2 = 0;
+            double tempRating3 = 0;
+            double tempRating4 = 0;
+            double tempRating5 = 0;
 
             foreach (Rating rating in list)
             {
-                Result1 += rating.Rating1;
-                Result2 += rating.Rating2;
-                Result3 += rating.Rating3;
-                Result4 += rating.Rating4;
-                Result5 += rating.Rating5;
+                tempRating1 += rating.Rating1;
+                tempRating2 += rating.Rating2;
+                tempRating3 += rating.Rating3;
+                tempRating4 += rating.Rating4;
+                tempRating5 += rating.Rating5;
 
                 RatingDateMinMax(ref dateTimeMin, ref dateTimeMax, rating);
 
@@ -109,15 +114,21 @@ namespace Rosenbach.ViewModels
                 }
             }
 
-            Result1 /= list.Count;
-            Result2 /= list.Count;
-            Result3 /= list.Count;
-            Result4 /= list.Count;
-            Result5 /= list.Count;
+            tempRating1 /= list.Count;
+            tempRating2 /= list.Count;
+            tempRating3 /= list.Count;
+            tempRating4 /= list.Count;
+            tempRating5 /= list.Count;
+
+            Result1 = (tempRating1 / 100).ToString("P");
+            Result2 = (tempRating2 / 100).ToString("P");
+            Result3 = (tempRating3 / 100).ToString("P");
+            Result4 = (tempRating4 / 100).ToString("P");
+            Result5 = (tempRating5 / 100).ToString("P");
 
             ResultCount = list.Count;
 
-            ReviewTime = dateTimeMin.ToShortDateString() + " - " + dateTimeMax.ToShortDateString();
+            ReviewTime = dateTimeMin.ToString("dd.MM.yyyy") + " - " + dateTimeMax.ToString("dd.MM.yyyy");
         }
 
         private static void RatingDateMinMax(ref DateTime dateTimeMin, ref DateTime dateTimeMax, Rating rating)
